@@ -30,9 +30,6 @@ export class ProductsComponent implements OnInit {
       console.log(this.productList);
     });
 
-    this.cartService.search.subscribe((val: any) => {
-      this.searchKey = val;
-    });
     this.cartService.getProducts().subscribe((res) => {
       this.totalItem = res.length;
     });
