@@ -9,7 +9,8 @@ import { ProductsComponent } from './component/products/products.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FilterPipe } from './shared/filter.pipe';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { CheckoutComponent } from './checkout/checkout.component';
+import { CheckoutComponent } from './component/checkout/checkout.component';
+import { ProductDetailsComponent } from './component/product-details/product-details.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { CheckoutComponent } from './checkout/checkout.component';
     CartComponent,
     ProductsComponent,
     FilterPipe,
-    CheckoutComponent
+    CheckoutComponent,
+    ProductDetailsComponent
   ],
   imports: [
     BrowserModule,

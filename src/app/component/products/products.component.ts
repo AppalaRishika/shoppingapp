@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ApiService } from 'src/app/service/api.service';
 import { CartService } from 'src/app/service/cart.service';
 
@@ -12,7 +13,11 @@ export class ProductsComponent implements OnInit {
   public productList: any;
   public filterCategory: any;
   searchKey: string = '';
-  constructor(private api: ApiService, private cartService: CartService) {}
+  constructor(
+    private api: ApiService,
+    private cartService: CartService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.api.getProduct().subscribe((res) => {
@@ -43,5 +48,8 @@ export class ProductsComponent implements OnInit {
         return a;
       }
     });
+  }
+  viewProductDetails(item: any) {
+    this.router.navigateByUrl('/product-details', { state: item });
   }
 }
