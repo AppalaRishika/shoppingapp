@@ -39,9 +39,6 @@ export class ProductsComponent implements OnInit {
       this.totalItem = res.length;
     });
   }
-  addtocart(item: any) {
-    this.cartService.addtoCart(item);
-  }
   filter(category: string) {
     this.filterCategory = this.productList.filter((a: any) => {
       if (a.category == category || category == '') {
@@ -51,5 +48,9 @@ export class ProductsComponent implements OnInit {
   }
   viewProductDetails(item: any) {
     this.router.navigateByUrl('/product-details', { state: item });
+  }
+  addtocart(item: any) {
+    this.cartService.addtoCart(item);
+    this.router.navigateByUrl('/cart', { state: item });
   }
 }

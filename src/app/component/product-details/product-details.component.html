@@ -1,5 +1,47 @@
-<div *ngIf="productDetails">
-    <img [src]="productDetails.image">
-  <p>{{productDetails.description}}</p>
-  
-</div>
+<ng-container *ngIf="productDetails">
+  <div class="container">
+    <div class="card-table">
+      <div class="cart-product">
+        <table class="table table-responsive">
+          <thead>
+            <tr>
+              <th>Product Name</th>
+              <th>Product Image</th>
+              <th>Description</th>
+              <th>Price</th>
+              <th>Quantity</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{ productDetails.title }}</td>
+              <td>
+                <img style="width: 120px" [src]="productDetails.image" alt="" />
+              </td>
+              <td style="width: 25%">{{ productDetails.description }}</td>
+              <th style="width: 12%">{{ productDetails.price }}</th>
+              <td style="width: 12%">{{ productDetails.quantity }}</td>
+              <td style="width: 12%">{{ productDetails.total }}</td>
+            </tr>
+            <tr>
+              <td colspan="2"></td>
+              <td>
+                <button routerLink="/products" class="btn btn-primary">
+                  Shop More
+                </button>
+              </td>
+              <td>
+                <button
+                  class="btn btn-primary"
+                  (click)="addtocart(productDetails)"
+                >
+                  Add to cart
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</ng-container>
