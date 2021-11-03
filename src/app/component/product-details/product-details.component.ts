@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from 'src/app/service/api.service';
 import { CartService } from 'src/app/service/cart.service';
 import { Router } from '@angular/router';
 @Component({
@@ -9,7 +8,6 @@ import { Router } from '@angular/router';
 })
 export class ProductDetailsComponent implements OnInit {
   constructor(
-    private api: ApiService,
     private cartService: CartService,
     private router: Router
   ) {}
@@ -17,7 +15,6 @@ export class ProductDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.productDetails = history.state;
-    console.log(this.productDetails);
   }
   addtocart(productDetails: ProductDetails) {
     this.cartService.addtoCart(this.productDetails);

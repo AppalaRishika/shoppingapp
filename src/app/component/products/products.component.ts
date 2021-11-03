@@ -20,29 +20,28 @@ export class ProductsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.api.getProduct().subscribe((res) => {
-      this.productList = res;
-      this.filterCategory = res;
-      this.productList.forEach((a: any) => {
+    this.api.getProduct().subscribe((result) => {
+      this.productList = result;
+      this.filterCategory = result;
+      this.productList.forEach((product: any) => {
         if (
-          a.category === "women's clothing" ||
-          a.category === "men's clothing"
+          product.category === "women's clothing" ||
+          product.category === "men's clothing"
         ) {
-          a.category = 'fashion';
+          product.category = 'fashion';
         }
-        Object.assign(a, { quantity: 1, total: a.price });
+        Object.assign(product, { quantity: 1, total: product.price });
       });
-      console.log(this.productList);
     });
 
-    this.cartService.getProducts().subscribe((res) => {
-      this.totalItem = res.length;
+    this.cartService.getProducts().subscribe((result) => {
+      this.totalItem = result.length;
     });
   }
   filter(category: string) {
-    this.filterCategory = this.productList.filter((a: any) => {
-      if (a.category == category || category == '') {
-        return a;
+    this.filterCategory = this.productList.filter((product: any) => {
+      if (product.category == category || category == '') {
+        return product;
       }
     });
   }
@@ -51,6 +50,5 @@ export class ProductsComponent implements OnInit {
   }
   addtocart(item: any) {
     this.cartService.addtoCart(item);
-    this.router.navigateByUrl('/cart', { state: item });
   }
 }
